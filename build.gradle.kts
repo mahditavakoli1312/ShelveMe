@@ -11,6 +11,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("com.github.eloyzone:jalali-calendar:1.0.0")
+}
+
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/d
 //
