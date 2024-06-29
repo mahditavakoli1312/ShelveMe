@@ -14,7 +14,7 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-   This plugin allows you to auto-shelve all changes you have , before close the project.
+   ShelveMe is a plugin to save your code changes when exiting the project via VCS shelve. Shelf files store in " $projectPath/.idea/shelf " file.
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
