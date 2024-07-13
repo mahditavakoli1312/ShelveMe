@@ -5,15 +5,12 @@ plugins {
 }
 
 group = "ir.mahdi-tavakoli"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation("com.github.eloyzone:jalali-calendar:1.0.0")
-}
 
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/d
@@ -22,8 +19,8 @@ dependencies {
 intellij {
     version.set("2023.2.6")
     type.set("IC") // Target IDE Platform
-
-    plugins.set(listOf(/* Plugin Dependencies */))
+    // Require the Android plugin (Gradle will choose the correct version):
+    plugins.set(listOf("android"))
 }
 
 tasks {
@@ -42,8 +39,8 @@ tasks {
     }
 
     signPlugin {
-        certificateChainFile.set(file("/home/mahditavakoli/Documents/ShelveMe-sign/chain.crt"))
-        privateKeyFile.set(file("/home/mahditavakoli/Documents/ShelveMe-sign/private.pem"))
+        certificateChainFile.set(file("/Users/mahditavakoli/Documents/ShelveMe-Sign/chain.crt"))
+        privateKeyFile.set(file("/Users/mahditavakoli/Documents/ShelveMe-Sign/private.pem"))
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
     }
 
@@ -54,7 +51,7 @@ tasks {
     runIde {
         // Absolute path to installed target 3.5 Android Studio to use as
         // IDE Development Instance (the "Contents" directory is macOS specific):
-        ideDir.set(file("/home/mahditavakoli/.local/share/JetBrains/Toolbox/apps/android-studio"))
+        ideDir.set(file("/Applications/Android Studio.app/Contents"))
     }
 
 }

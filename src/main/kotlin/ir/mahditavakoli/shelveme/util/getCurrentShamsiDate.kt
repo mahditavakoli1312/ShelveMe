@@ -1,19 +1,16 @@
 package ir.mahditavakoli.shelveme.util
 
-import com.github.eloyzone.jalalicalendar.DateConverter
-import com.github.eloyzone.jalalicalendar.JalaliDateFormatter
-import java.util.*
+
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 fun getPersianCurrentDateYMD(): String {
-    val calendar: Calendar = Calendar.getInstance()
+    // Get the current date and time
+    val currentDateTime = LocalDateTime.now()
 
-    val year: Int = calendar.get(Calendar.YEAR)
-    val month: Int = calendar.get(Calendar.MONTH) + 1 // January is 0, so we add 1
-    val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+    // Define the formatter for the desired format
+    val formatter = DateTimeFormatter.ofPattern("'d-'yyyy-MM-dd-'t-'HH:mm")
 
-    val dateConverter = DateConverter()
-
-
-    return dateConverter.gregorianToJalali(year, month, day)
-        .format(JalaliDateFormatter("yyyy/mm/dd", JalaliDateFormatter.FORMAT_IN_ENGLISH)).replace("/", "-")
+    // Format the current date and time using the formatter
+    return currentDateTime.format(formatter)
 }
