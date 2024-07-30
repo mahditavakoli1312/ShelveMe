@@ -2,7 +2,7 @@ name: ShelveMeBuild
 on:
   pull_request:
     branches:
-      - 0-develpop
+      - 0-develop
   push:
     branches:
       - 0-develop
@@ -10,7 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
