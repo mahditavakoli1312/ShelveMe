@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        jdk: [8, 11, 17,18]
+        jdk: [ 17,18 ]
 
     steps:
       - name: Checkout code
