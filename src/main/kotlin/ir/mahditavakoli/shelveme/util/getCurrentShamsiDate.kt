@@ -9,7 +9,7 @@ fun getPersianCurrentDateYMD(): String {
     val currentDateTime = LocalDateTime.now()
 
     // Define the formatter for the desired format
-    val formatter = DateTimeFormatter.ofPattern("'d-'yyyy-MM-dd-'t-'HH:mm")
+    val formatter = DateTimeFormatter.ofPattern("'d:'yyyy-MM-dd-'t:'HH:mm")
 
     // Format the current date and time using the formatter
     return currentDateTime.format(formatter)

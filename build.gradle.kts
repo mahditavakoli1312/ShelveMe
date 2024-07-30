@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ir.mahdi-tavakoli"
-version = "1.0.1"
+version = "2.0.0"
 
 repositories {
     mavenCentral()
@@ -39,8 +39,8 @@ tasks {
     }
 
     signPlugin {
-        certificateChainFile.set(file("/Users/mahditavakoli/Documents/ShelveMe-Sign/chain.crt"))
-        privateKeyFile.set(file("/Users/mahditavakoli/Documents/ShelveMe-Sign/private.pem"))
+        certificateChainFile.set(file("/home/mahditavakoli/Documents/ShelveMe-sign/chain.crt"))
+        privateKeyFile.set(file("/home/mahditavakoli/Documents/ShelveMe-sign/private.pem"))
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
     }
 

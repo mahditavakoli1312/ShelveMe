@@ -5,8 +5,7 @@ import org.jdesktop.swingx.VerticalLayout
 import javax.swing.JLabel
 import javax.swing.JPanel
 
-class ShelveMeConfigStatus() : JPanel() {
-
+class ShelveMeConfigStatus : JPanel() {
 
     init {
         layout = VerticalLayout(10)
@@ -14,14 +13,7 @@ class ShelveMeConfigStatus() : JPanel() {
     }
 
     fun updateConfigStatus() {
-
-
-        println("updateConfigStatus")
         val state = ShelveState.getShelveSate()
-
-        println("state.autoShelve ${state.autoShelve}")
-        println("state.periodically ${state.periodically}")
-
         val titleLabel = JLabel("ShelveMe status :")
         val autoShelveLabel = JLabel("auto-shelve is on")
         val periodicallyShelveLabel = JLabel("periodically-shelve is on : ${state.periodDuration} min")

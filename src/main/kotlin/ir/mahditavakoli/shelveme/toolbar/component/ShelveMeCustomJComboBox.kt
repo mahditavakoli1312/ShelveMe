@@ -39,14 +39,15 @@ class ShelveMeCustomJComboBox(
 
         // Add action listener to the combo box
         comboBox.addActionListener {
-            val selectedKey = comboBox.selectedItem as? String ?: return@addActionListener
-            val value = itemMap[selectedKey] ?: return@addActionListener
-
-            selectedItem.setRight(selectedKey)
-            selectedItem.setLeft(value)
-
-            onItemSelected(selectedItem.right, selectedItem.left)
-
+            try {
+                val selectedKey = comboBox.selectedItem as? String ?: return@addActionListener
+                val value = itemMap.filter { it.value == selectedKey }.first().key
+                selectedItem.setRight(selectedKey)
+                selectedItem.setLeft(value)
+                onItemSelected(selectedItem.right, selectedItem.left)
+            } catch (e: Exception) {
+                println("error : $e")
+            }
         }
 
         btn_submit.addActionListener(
