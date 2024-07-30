@@ -3,10 +3,10 @@ name: Build ShelveMe
 on:
   push:
     branches:
-      - main
+      - 0-develop
   pull_request:
     branches:
-      - main
+      - 0-develop
 
 jobs:
   build:
