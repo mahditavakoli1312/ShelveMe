@@ -1,28 +1,33 @@
-name: ShelveMeBuild
+name: Build ShelveMe
+
 on:
-  pull_request:
-    branches:
-      - 0-develop
   push:
     branches:
-      - 0-develop
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
 
+    strategy:
+      matrix:
+        jdk: [8, 11, 17,18]
+
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.2.1
+      - name: Set up JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v2
         with:
-          java-version: '18'
           distribution: 'adopt'
+          java-version: ${{ matrix.jdk }}
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: RunIde with Gradle
-        uses: ./gradlew runIde
+      - name: Build with Gradle
+        run: ./gradlew build
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
 
