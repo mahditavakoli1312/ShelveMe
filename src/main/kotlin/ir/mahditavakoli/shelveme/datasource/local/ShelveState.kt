@@ -74,8 +74,10 @@ class ShelveState : PersistentStateComponent<ShelveState.State> {
             val samangarState = ApplicationManager.getApplication().service<ShelveState>()
             // Set values
             samangarState.periodDuration = period
+            sdf
         }
 
+        asdasd
         fun getShelveSate(): State {
             val shelveState = ApplicationManager.getApplication().service<ShelveState>()
             kotlin.runCatching {
