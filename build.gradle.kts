@@ -48,12 +48,12 @@ tasks {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
 
-    runIde {
+/*    runIde {
         // for macos
         // ideDir.set(file("/Applications/Android Studio.app/Contents"))
 
         // for ubuntu
         ideDir.set(file("/home/mahditavakoli/.local/share/JetBrains/Toolbox/apps/android-studio"))
-    }
+    }*/
 
 }
