@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name : Fetch
+      - name: Fetch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '18'
+          distribution: 'adopt'
 
-      - name : Build with Gradle
+      - name: Build with Gradle
         uses: ./gradlew build
