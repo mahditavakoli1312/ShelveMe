@@ -1,0 +1,25 @@
+name: ShelveMeBuild
+on:
+  pull_request:
+    branches:
+      - 0-develpop
+  push:
+    branches:
+      - 0-develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Fetch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+
+      - name : Build with Gradle
+        uses: ./gradlew build
