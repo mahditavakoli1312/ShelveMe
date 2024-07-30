@@ -10,11 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
