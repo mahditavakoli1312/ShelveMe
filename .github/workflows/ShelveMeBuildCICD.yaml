@@ -31,3 +31,8 @@ jobs:
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
 
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Verify Plugin
+        run: ./gradlew verifyPlugin
