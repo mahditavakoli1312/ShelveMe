@@ -14,7 +14,7 @@ class ShelveState : PersistentStateComponent<ShelveState.State> {
         var rememberShelve: Boolean = false,
         var autoShelve: Boolean = false,
         var periodically: Boolean = false,
-        var periodDuration : Long = 30
+        var periodDuration: Long = 30
     )
 
     private var state: State = State()
@@ -85,10 +85,10 @@ class ShelveState : PersistentStateComponent<ShelveState.State> {
                 val value3 = shelveState.periodically
                 val value4 = shelveState.periodDuration
 
-                println("user: $value1")
-                println("user: $value2")
-                println("user: $value3")
-                println("user: $value4")
+                println("value1: $value1")
+                println("value2: $value2")
+                println("value3: $value3")
+                println("value4: $value4")
 
             }
             return shelveState.state

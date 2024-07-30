@@ -24,13 +24,15 @@
     <depends>com.intellij.modules.androidstudio</depends>
 
     <applicationListeners>
-        <listener class="ir.mahditavakoli.shelveme.MahdiUProjectManagerListener"
+        <listener class="ir.mahditavakoli.shelveme.service.MahdiUProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <toolWindow id="ShelveMe" anchor="right" factoryClass="ir.mahditavakoli.shelveme.toolbar.ShelveMeMainToolbar"
+                    icon="icons/pluginIcon.png"
+                    doNotActivateOnStart="false"/>
     </extensions>
 </idea-plugin>

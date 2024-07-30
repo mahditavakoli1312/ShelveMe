@@ -11,8 +11,12 @@ import com.intellij.util.ui.JBUI
 import ir.mahditavakoli.shelveme.datasource.local.ShelveState
 import ir.mahditavakoli.shelveme.toolbar.component.ShelveMeConfigStatus
 import ir.mahditavakoli.shelveme.toolbar.component.ShelveMeCustomJComboBox
-import ir.mahditavakoli.shelveme.util.shelveChanges
+import ir.mahditavakoli.shelveme.util.askUserToRestartIDE
+import ir.mahditavakoli.shelveme.util.createPatch
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jdesktop.swingx.VerticalLayout
 import javax.swing.BorderFactory
 import javax.swing.JButton
@@ -45,7 +49,7 @@ class MyToolWindow(
 
     private val state = ShelveState.getShelveSate()
 
-    private val shelveBtn: JButton = JButton("shelve me")
+    private val shelveBtn: JButton = JButton("Create patch")
     private val autoShelveLabel = JLabel("Do you want to get a shelve when you leave ?")
     private val autoShelveButton: JButton = JButton("Auto shelve")
 
@@ -65,10 +69,11 @@ class MyToolWindow(
             "Enter Period Duration :",
             mapOf("1" to "1 min", "10" to "10 min", "30" to "30 min", "60" to "60 min")
         ) { key, value ->
-            println("period duration : $key -> $value")
+            println("select $value mins to shelve auto")
             kotlin.runCatching {
-                ShelveState.savePeriodDuration(key.toLong())
+                ShelveState.savePeriodDuration(value.toLong())
                 shelveMeConfigStatus.updateConfigStatus()
+                askUserToRestartIDE()
             }
         })
 
@@ -83,11 +88,13 @@ class MyToolWindow(
         }
         // endregion auto-shelve
 
-        // region shelve button
+        // region patch button
         shelveBtn.addActionListener {
-            shelveChanges(project)
+            GlobalScope.launch(Dispatchers.IO) {
+                createPatch(project)
+            }
         }
-        // endregion shelve button
+        // endregion patch button
 
         // region periodically-shelve
         periodicallyShelveButton.addActionListener {

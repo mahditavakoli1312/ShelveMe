@@ -10,35 +10,29 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+// its dont need to use
 @OptIn(DelicateCoroutinesApi::class)
 fun shelveChanges(project: Project) {
-    println(project.name)
     val dateTime = getPersianCurrentDateYMD()
     val projectName = getProjectName(project)
     var shelfName = "ShelveMe__${dateTime}__$projectName"
 
     GlobalScope.launch(Dispatchers.IO) {
-        val branchName = getHeadBranchName(project)
-        shelfName = "ShelveMe__${dateTime}__${projectName}__${branchName}"
+//        val branchName = getHeadBranchName(project)
+//        shelfName = "ShelveMe__${dateTime}__${projectName}__${branchName}"
+        shelfName = "ShelveMe__${dateTime}__${projectName}"
     }
 
     val changeListManager = ChangeListManager.getInstance(project)
     val changes = changeListManager.allChanges
-    println("changes $changes")
 
     // shelve process
     try {
         val shelveManager = ShelveChangesManager.getInstance(project)
         val shelvedChangeList = shelveManager.shelveChanges(changes.toList(), shelfName, true)
 
-        println("shelvedChangeList : $shelvedChangeList")
-        println("shelfName : $shelfName")
         if (shelvedChangeList.changes?.isNotEmpty() == true) {
 
-            println("Changes successfully shelved: $shelfName")
-            println("Changes successfully shelved in : ${shelvedChangeList.path}")
-            println("Changes successfully shelved in : ${shelvedChangeList.name}")
-            println("Changes successfully shelved in : ${shelvedChangeList.displayName}")
             // Unshelve changes
             unshelveChanges(project, shelvedChangeList)
         } else {
@@ -56,7 +50,6 @@ private fun unshelveChanges(project: Project, shelvedList: ShelvedChangeList) {
         val changesToUnshelve = shelvedList.changes
         if (changesToUnshelve?.isNotEmpty() == true) {
             shelveManager.unshelveChangeList(shelvedList, changesToUnshelve.toList(), null, null, true)
-            println("Unshelved changes for project: ${project.name}")
         }
     } catch (e: VcsException) {
         e.printStackTrace()
