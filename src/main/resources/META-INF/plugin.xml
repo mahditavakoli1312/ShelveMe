@@ -20,8 +20,6 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.vcs</depends>
-    <depends>org.jetbrains.android</depends>
-    <depends>com.intellij.modules.androidstudio</depends>
 
     <applicationListeners>
         <listener class="ir.mahditavakoli.shelveme.service.MahdiUProjectManagerListener"
