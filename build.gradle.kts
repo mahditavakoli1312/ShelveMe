@@ -48,12 +48,17 @@ tasks {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
 
-/*    runIde {
-        // for macos
-        // ideDir.set(file("/Applications/Android Studio.app/Contents"))
+      /*runIde {
+          // macos:android-studio
+//           ideDir.set(file("/Applications/Android Studio.app/Contents"))
+          // macos:intellij
+          ideDir.set(file("/Users/mahditavakoli/Applications/IntelliJ IDEA Community Edition.app/Contents"))
 
-        // for ubuntu
-        ideDir.set(file("/home/mahditavakoli/.local/share/JetBrains/Toolbox/apps/android-studio"))
-    }*/
+          // ubuntu:android-studio
+  //        ideDir.set(file("/home/mahditavakoli/.local/share/JetBrains/Toolbox/apps/android-studio"))
+
+          // ubuntu:intellij-idea
+//          ideDir?set(file("/home/mahditavakoli/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition"))
+      }*/
 
 }
